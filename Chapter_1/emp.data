@@ -1,0 +1,42 @@
+emp.data file:
+NAME    PAY     HOURS
+Beth  	4.00	  0
+Dan  	  3.75	  0
+Kathy	  4.00	  10
+Mark	  5.00	  20
+Mary	  5.50	  22
+Susie	  4.25	  18
+end of emp.data file
+/**All the below awk sentences are exetuded at the terminal**/
+/** PRINT THE WHOLE FILE**/
+awk '{print $0}' emp.data
+/**PRINT THE NAME AND THE PAY FOR EVERYONE WHO HAS WORKED MORE THAN ZERO HOURS**/
+awk '$3>0 {print $1,$2*$3}' emp.data
+/**PRINT THE NAMES OF THE EMPLOYEES WHO DID NOT WORK**/
+awk '$3==0 {print}' emp.data
+/**PRINT THE NAMES OF THE EMPLOYEES THAT WORKED MORE THAN ZERO HOURS**/
+awk '$3>0 {print $1}' emp.data
+/**PRINT THE NUMBER OF LINE AND ALL THE INFORMATION OF THE FILE **/
+awk '{print NR,$0}' emp.data
+/**FORMATED OUTPUT **/
+awk '{print "total pay for",$1,"is  ",$2*$3}' emp.data
+/**PRINT THE EMPLOYEES THAT EARN FIVE OR MORE DOLLARS PER HOUR**/
+awk '$2>=5 { print NR $0}' emp.data
+/**PRINT THE EMPLOYEES THAT HAVE TOTAL PAY MORE THAN 50$**/
+awk '$2*$3>50 { printf("%.2f for %s \n",$2*$3,$1)}' emp.data
+/**PRINT THE TOTAL NUMBER OF LINES**/
+awk '{print NR}' emp.data
+/**PRINT THE SIXT LINE **/
+awk ' NR==6 { print $0} ' emp.data
+/**PRINT EVERY INPUT LINE WITH MORE THAN FOUR FIELDS**/
+awk 'NF>4' emp.data
+/**PRINT THE TOTAL NUMBERS OF LINES THAT CONTAIN BETH**/
+awk '/Beth/ { nlines=nlines+1} END { print nlines} 'emp.data
+/**PRINT EVERY LINE THAT HAS AT LEAST ONE FIELD**/
+awk '$NF >0 'emp.data
+/**PRINT EVERY LINE THAT HAS MORE THAN 80 CHARACTERS**/
+/**PRINT THE LINE LONGER THAN 80 CHARACTER**/
+awk '$0>80 { print }' emp.data
+/**PRINT THE NUMBERS OF FIELDS IN EVERY LINE FOLLOWED BY THE LINE ITSELF
+awk '{print NF $0}' emp.data
+
